@@ -4,17 +4,17 @@ import { UserLoginData, UserRegistrationData, FeedbackData } from './types';
 const apiClient = axios.create({
   //baseURL: 'http://eb-sqrts-env.eba-bq53g3td.ap-southeast-1.elasticbeanstalk.com/tg_query_api/api/v1/',
   //baseURL: 'http://localhost:31000/',
-  baseURL: 'http://a240ef9d8bdbf4b738905bbd2dfe1c01-1547472837.ap-southeast-1.elb.amazonaws.com:8080/',
+  baseURL: 'http://a225f70bd968c4c0d99e20195b7754ae-1869194862.ap-southeast-1.elb.amazonaws.com:8080/',
   // add more default settings here
 });
 
 export enum ApiMethod {
   REGISTER = 'tgs/api/v1/auth/Register',
-  AUTHENTICATE = 'qr_gen_api/api/v1/auth/Authenticate',
+  AUTHENTICATE = 'tgs/api/v1/auth/Authenticate',
   GETALLTRAINFARE = 'tgs/api/v1/fares/GetAllTrainFare',
   GETTRAINROUTES = 'tgs/api/v1/routes/GetTrainRoutes',
   GETTICKETS = 'tgs/api/v1/tickets/Tickets',
-  GETTRAINFARE = 'qr_gen_api/api/v1/fares/GetTrainFare',
+  GETTRAINFARE = 'tgs/api/v1/fares/GetTrainFare',
   PURCHASETICKET = 'tgs/api/v1/tickets/PurchaseTicket',
   CREATEPAYMENTINTENT = 'pay/api/v1/payments/CreatePaymentIntent',
   GETUSERS = 'tgs/api/v1/users/GetUsers',
