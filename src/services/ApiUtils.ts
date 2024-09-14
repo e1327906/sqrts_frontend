@@ -3,13 +3,14 @@ import { UserLoginData, UserRegistrationData, FeedbackData } from './types';
 
 const apiClient = axios.create({
   //baseURL: 'http://eb-sqrts-env.eba-bq53g3td.ap-southeast-1.elasticbeanstalk.com/tg_query_api/api/v1/',
-  baseURL: 'http://localhost:31000/',
+  //baseURL: 'http://localhost:31000/',
+  baseURL: 'http://qr-gen-service:8080/',
   // add more default settings here
 });
 
 export enum ApiMethod {
   REGISTER = 'tgs/api/v1/auth/Register',
-  AUTHENTICATE = 'tgs/api/v1/auth/Authenticate',
+  AUTHENTICATE = 'qr_gen_api/api/v1/auth/Authenticate',
   GETALLTRAINFARE = 'tgs/api/v1/fares/GetAllTrainFare',
   GETTRAINROUTES = 'tgs/api/v1/routes/GetTrainRoutes',
   GETTICKETS = 'tgs/api/v1/tickets/Tickets',
