@@ -14,7 +14,7 @@ export enum ApiMethod {
   GETALLTRAINFARE = 'tgs/api/v1/fares/GetAllTrainFare',
   GETTRAINROUTES = 'tgs/api/v1/routes/GetTrainRoutes',
   GETTICKETS = 'tgs/api/v1/tickets/Tickets',
-  GETTRAINFARE = 'tgs/api/v1/fares/GetTrainFare',
+  GETTRAINFARE = 'qr_gen_api/api/v1/fares/GetTrainFare',
   PURCHASETICKET = 'tgs/api/v1/tickets/PurchaseTicket',
   CREATEPAYMENTINTENT = 'pay/api/v1/payments/CreatePaymentIntent',
   GETUSERS = 'tgs/api/v1/users/GetUsers',
