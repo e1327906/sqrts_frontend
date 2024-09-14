@@ -3,26 +3,26 @@ import { UserLoginData, UserRegistrationData, FeedbackData } from './types';
 
 const apiClient = axios.create({
   //baseURL: 'http://eb-sqrts-env.eba-bq53g3td.ap-southeast-1.elasticbeanstalk.com/tg_query_api/api/v1/',
-  baseURL: 'http://localhost:5500/tg_query_api/api/v1/',
+  baseURL: 'http://localhost:31000/',
   // add more default settings here
 });
 
 export enum ApiMethod {
-  REGISTER = 'auth/Register',
-  AUTHENTICATE = 'auth/Authenticate',
-  GETALLTRAINFARE = 'fares/GetAllTrainFare',
-  GETTRAINROUTES = 'routes/GetTrainRoutes',
-  GETTICKETS = 'tickets/Tickets',
-  GETTRAINFARE = 'fares/GetTrainFare',
-  PURCHASETICKET = 'tickets/PurchaseTicket',
-  CREATEPAYMENTINTENT = 'payments/CreatePaymentIntent',
-  GETUSERS = 'users/GetUsers',
-  REFUNDTICKETS = 'tickets/RefundTickets',
-  REFUND = 'payments/Refund',
-  CHANGEPASSWORD = 'users/ChangePassword',  
-  FEEDBACK = 'general/Feedback',
-  VALIDATEOTP = 'auth/ValidateOtp',
-  SENDOTP = 'auth/SendOtp',
+  REGISTER = 'tgs/api/v1/auth/Register',
+  AUTHENTICATE = 'tgs/api/v1/auth/Authenticate',
+  GETALLTRAINFARE = 'tgs/api/v1/fares/GetAllTrainFare',
+  GETTRAINROUTES = 'tgs/api/v1/routes/GetTrainRoutes',
+  GETTICKETS = 'tgs/api/v1/tickets/Tickets',
+  GETTRAINFARE = 'tgs/api/v1/fares/GetTrainFare',
+  PURCHASETICKET = 'tgs/api/v1/tickets/PurchaseTicket',
+  CREATEPAYMENTINTENT = 'pay/api/v1/payments/CreatePaymentIntent',
+  GETUSERS = 'tgs/api/v1/users/GetUsers',
+  REFUNDTICKETS = 'tgs/api/v1/tickets/RefundTickets',
+  REFUND = 'tgs/api/v1/tickets/Refund',
+  CHANGEPASSWORD = 'tgs/api/v1/users/ChangePassword',  
+  FEEDBACK = 'fbk/api/v1/general/Feedback',
+  VALIDATEOTP = 'tgs/api/v1/auth/ValidateOtp',
+  SENDOTP = 'tgs/api/v1/auth/SendOtp',
   // Add more endpoints as needed
 }
 

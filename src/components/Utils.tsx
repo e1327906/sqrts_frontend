@@ -32,7 +32,9 @@ class Utils {
       case 6:
         return 'Cancelled';
       case 7:
-        return 'Refunded';
+        return 'Refund Inprogress';
+      case 8:
+      return 'Refunded';
       default:
         return 'Inactive';
     }

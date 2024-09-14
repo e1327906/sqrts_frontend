@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqrts-frontend-deployment
+  labels:
+    app: sqrts-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqrts-frontend
+  template:
+    metadata:
+      labels:
+        app: sqrts-frontend
+    spec:
+      containers:
+        - name: sqrts-frontend
+          image: e1327906/sqrts_frontend:latest # Replace with your Docker image name
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sqrts-frontend-service
+spec:
+  type: NodePort
+  selector:
+    app: sqrts-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 32000 # Change this port if necessary
