@@ -4,7 +4,7 @@ import { UserLoginData, UserRegistrationData, FeedbackData } from './types';
 const apiClient = axios.create({
   //baseURL: 'http://eb-sqrts-env.eba-bq53g3td.ap-southeast-1.elasticbeanstalk.com/tg_query_api/api/v1/',
   //baseURL: 'http://localhost:31000/',
-  baseURL: 'http://a66b5484ddd804803a5b03448abd3432-56088126.ap-southeast-1.elb.amazonaws.com:8080/',
+  baseURL: 'http://a68539567d40e4809978b73b3f73c970-1761258638.ap-southeast-1.elb.amazonaws.com:8080/',
   // add more default settings here
 });
 
