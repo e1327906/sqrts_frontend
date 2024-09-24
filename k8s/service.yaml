@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sqrts-frontend-service
+spec:
+  type: NodePort # Change this type to LoadBalancer if necessary
+  selector:
+    app: sqrts-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 32000 # Change this port if necessary
