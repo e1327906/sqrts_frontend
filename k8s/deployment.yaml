@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqrts-frontend-deployment
+  labels:
+    app: sqrts-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqrts-frontend
+  template:
+    metadata:
+      labels:
+        app: sqrts-frontend
+    spec:
+      containers:
+        - name: sqrts-frontend-container
+          image: weiwenll/sqrts_frontend:latest # Replace with your Docker image name
+          ports:
+            - containerPort: 80
+          resources:
+            limits: # Define resources.limits to manage CPU and memory usage
+              memory: "128Mi" # Define or change as needed
+              cpu: "250m" # Define or change as needed
+          env:
+            - name: NODE_ENV
+              value: "production"
