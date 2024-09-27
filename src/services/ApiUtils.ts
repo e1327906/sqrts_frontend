@@ -3,30 +3,59 @@ import { UserLoginData, UserRegistrationData, FeedbackData } from './types';
 
 const apiClient = axios.create({
   //baseURL: 'http://eb-sqrts-env.eba-bq53g3td.ap-southeast-1.elasticbeanstalk.com/tg_query_api/api/v1/',
-  baseURL: 'http://localhost:5500/tg_query_api/api/v1/',
+  baseURL: 'http://localhost:8071/qr_gen_api/api/v1/',
   // add more default settings here
 });
 
 export enum ApiMethod {
-  REGISTER = 'auth/Register',
-  AUTHENTICATE = 'auth/Authenticate',
-  GETALLTRAINFARE = 'fares/GetAllTrainFare',
-  GETTRAINROUTES = 'routes/GetTrainRoutes',
-  GETTICKETS = 'tickets/Tickets',
-  GETTRAINFARE = 'fares/GetTrainFare',
-  PURCHASETICKET = 'tickets/PurchaseTicket',
-  CREATEPAYMENTINTENT = 'payments/CreatePaymentIntent',
+  // User endpoints
   GETUSERS = 'users/GetUsers',
-  REFUNDTICKETS = 'tickets/RefundTickets',
-  REFUND = 'payments/Refund',
+  LOGOUT = 'users/Logout',
   CHANGEPASSWORD = 'users/ChangePassword',  
+
+  // Ticket Service endpoints
+  GETTICKETS = 'tickets/Tickets',
+  SERVICESTATUS = 'tickets/ServiceStatus',
+  REFUNDTICKETS = 'tickets/RefundTickets',
+  REFUND = 'tickets/Refund',
+  PURCHASETICKET = 'tickets/PurchaseTicket',
+
+  // Payment Service endpoints
+  PAYMENTHOOK = 'payments/webhook',
+  PAYMENTREFUND = 'payments/Refund',
+  FETCHCUSTOMERCARDS = 'payments/FetchCustomerCards',
+  DELETEPAYMENTMETHOD = 'payments/DeletePaymentMethod',
+  CREATESETUPINTENT = 'payments/CreateSetupIntent',
+  CREATEPAYMENTINTENT = 'payments/CreatePaymentIntent',
+  CREATEPAYMENTINTENTBYNEWCARD = 'payments/CreatePaymentIntentByNewCard',
+
+  // Message Service endpoints
+  SENDMESSAGE = 'message/send',
+
+  // Feedback Service endpoints
   FEEDBACK = 'general/Feedback',
+
+  // Fare endpoints
+  GETALLTRAINFARE = 'fares/GetAllTrainFare',
+  GETALLBUSFARE = 'fares/GetAllBusFare',
+  GETTRAINFARE = 'fares/GetTrainFare',
+  GETBUSFARE = 'fares/GetBusFare',
+
+  // Authentication endpoints
   VALIDATEOTP = 'auth/ValidateOtp',
   SENDOTP = 'auth/SendOtp',
+  REGISTER = 'auth/Register',
+  REFRESHTOKEN = 'auth/RefreshToken',
+  AUTHENTICATE = 'auth/Authenticate',
+
+  // Route endpoints
+  GETALLTRAINROUTES = 'routes/GetAllTrainRoutes',
+  GETALLBUSROUTES = 'routes/GetAllBusRoutes',
   // Add more endpoints as needed
 }
 
 export const registerUser = async (data: UserRegistrationData) => {
+  // console.log('API Base URL:', apiClient.defaults.baseURL);
   try {
     const response = await apiClient.post(ApiMethod.REGISTER, data);
     return response.data;
