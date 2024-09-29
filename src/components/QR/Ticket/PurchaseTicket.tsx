@@ -50,7 +50,7 @@ const PurchaseTicket: React.FC = () => {
 
     const fetchPoints = async () => {
         try {
-            const response = await fetchDataWithoutParam(ApiMethod.GETTRAINROUTES);
+            const response = await fetchDataWithoutParam(ApiMethod.GETALLTRAINROUTES);
             const data = response.data;
             setDeparturePoints(data.ResponseData);
             setArrivalPoints(data.ResponseData);
