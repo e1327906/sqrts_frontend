@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Form, Button, Modal, Spinner } from "react-bootstrap";
+import { Container, Form, Button, Modal, ProgressBar } from "react-bootstrap";
 import { registerUser } from "../../services/ApiUtils";
 import OTPForm from "./OTPForm";
 import { SessionUserData, UserProps } from "../../services/types";
@@ -243,13 +243,7 @@ const RegisterForm: React.FC = () => {
             className="w-100 mb-3"
             disabled
           >
-            <Spinner
-              as="span"
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
+            <ProgressBar animated now={100} />
           </Button>
         ) : (
           <Button variant="primary" type="submit" className="w-100 mb-3">
