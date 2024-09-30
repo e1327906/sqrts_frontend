@@ -4,26 +4,32 @@ import { UserLoginData, UserRegistrationData, FeedbackData } from './types';
 const apiClient = axios.create({
   //baseURL: 'http://eb-sqrts-env.eba-bq53g3td.ap-southeast-1.elasticbeanstalk.com/tg_query_api/api/v1/',
   //baseURL: 'http://localhost:31000/',
-  baseURL: 'http://a68539567d40e4809978b73b3f73c970-1761258638.ap-southeast-1.elb.amazonaws.com:8080/',
+  baseURL: 'https://zph0ay66vh.execute-api.ap-southeast-1.amazonaws.com/prod/',
   // add more default settings here
 });
 
 export enum ApiMethod {
-  REGISTER = 'tgs/api/v1/auth/Register',
-  AUTHENTICATE = 'tgs/api/v1/auth/Authenticate',
-  GETALLTRAINFARE = 'tgs/api/v1/fares/GetAllTrainFare',
-  GETTRAINROUTES = 'tgs/api/v1/routes/GetTrainRoutes',
-  GETTICKETS = 'tgs/api/v1/tickets/Tickets',
-  GETTRAINFARE = 'tgs/api/v1/fares/GetTrainFare',
-  PURCHASETICKET = 'tgs/api/v1/tickets/PurchaseTicket',
-  CREATEPAYMENTINTENT = 'pay/api/v1/payments/CreatePaymentIntent',
-  GETUSERS = 'tgs/api/v1/users/GetUsers',
-  REFUNDTICKETS = 'tgs/api/v1/tickets/RefundTickets',
-  REFUND = 'tgs/api/v1/tickets/Refund',
-  CHANGEPASSWORD = 'tgs/api/v1/users/ChangePassword',  
-  FEEDBACK = 'fbk/api/v1/general/Feedback',
-  VALIDATEOTP = 'tgs/api/v1/auth/ValidateOtp',
-  SENDOTP = 'tgs/api/v1/auth/SendOtp',
+  REGISTER = 'auth/Register',
+  AUTHENTICATE = 'auth/Authenticate',  
+  VALIDATEOTP = 'auth/ValidateOtp',
+  SENDOTP = 'auth/SendOtp',
+
+  GETALLTRAINFARE = 'fares/GetAllTrainFare',
+  GETTRAINFARE = 'fares/CalculateTrainFare',
+
+  GETTRAINROUTES = 'routes/GetTrainRoutes',
+
+  GETTICKETS = 'tickets/GetTickets',  
+  PURCHASETICKET = 'tickets/PurchaseTicket',
+  REFUNDTICKETS = 'tickets/GetRefundTickets',
+  REFUND = 'tickets/RefundTicket',
+
+  CREATEPAYMENTINTENT = 'payments/CreatePaymentIntent',
+  
+  GETUSERS = 'users/GetUsers',  
+  CHANGEPASSWORD = 'users/ChangePassword',  
+
+  FEEDBACK = 'general/Feedback',
   // Add more endpoints as needed
 }
 
