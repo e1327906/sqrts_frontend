@@ -28,7 +28,7 @@ const OTPForm: React.FC<UserProps> = ({ userPropsData }) => {
         otpNum: parseInt(otpNum)
       };
       const response = await postDataByParams(ApiMethod.VALIDATEOTP, params, 
-        { headers: { "Content-Type": "application/json" } });
+        { headers: { 'Content-Type': 'application/json' } });
 
       const data = response.data;
       console.log('ResponseData:', data.ResponseData);
@@ -40,7 +40,7 @@ const OTPForm: React.FC<UserProps> = ({ userPropsData }) => {
       }, 100);
 
     } catch (error) {
-      console.error("Error otp:", error);
+      console.error('Error otp:', error);
       setIsSuccess(false);
       setIsValidateOTP(!isValidateOTP);
     }
@@ -57,7 +57,7 @@ const OTPForm: React.FC<UserProps> = ({ userPropsData }) => {
       };
       const response = await postDataByParams(ApiMethod.VALIDATEOTP, params,
         {
-          headers: { "Content-Type": "application/json" }
+          headers: { 'Content-Type': 'application/json' }
         });
 
       const data = response.data;
@@ -67,7 +67,7 @@ const OTPForm: React.FC<UserProps> = ({ userPropsData }) => {
       setIsValidateOTP(!isValidateOTP);
 
     } catch (error) {
-      console.error("Error otp:", error);
+      console.error('Error otp:', error);
       setIsSuccess(false);
     }
     setLoading(false);
@@ -79,7 +79,7 @@ const OTPForm: React.FC<UserProps> = ({ userPropsData }) => {
         <Form.Label>{`Please enter your OTP number which was sent to ${userPropsData.email}`}</Form.Label>
         <Form.Control
           type="number"
-          placeholder={`000000`}
+          placeholder={'000000'}
           value={otpNum}
           onChange={(e) => setOtpNum(e.target.value)}
           required

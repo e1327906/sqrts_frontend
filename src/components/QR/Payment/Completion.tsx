@@ -1,8 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import Layout from "../../Layout";
-import { ApiMethod, postDataByParams } from "../../../services/ApiUtils";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Layout from '../../Layout';
+import { ApiMethod, postDataByParams } from '../../../services/ApiUtils';
 
 const Completion: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -37,7 +37,7 @@ const Completion: React.FC = () => {
       const params = { ...paramsObj };
       const response = await postDataByParams(ApiMethod.PURCHASETICKET, params,
         {
-          headers: { "Content-Type": "application/json" }
+          headers: { 'Content-Type': 'application/json' }
         }
       );
       const data = response.data;
@@ -48,7 +48,7 @@ const Completion: React.FC = () => {
       navigate('/viewQRTickets');
     } catch (error) {
       console.error('Error fetching points:', error);
-      setError("An error occurred while processing your request.");
+      setError('An error occurred while processing your request.');
       setLoading(false);
     }
   };

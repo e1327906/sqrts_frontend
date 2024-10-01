@@ -82,7 +82,7 @@ const PurchaseTicket: React.FC = () => {
             const response = await postDataByParams(ApiMethod.GETTRAINFARE,
                 params,
                 {
-                headers: { "Content-Type": "application/json" }
+                headers: { 'Content-Type': 'application/json' }
                 }
             );
             const data = response.data;
@@ -122,7 +122,7 @@ const PurchaseTicket: React.FC = () => {
             try {
                 // Fetch fare amount
                 const fareAmount = await fetchFare();
-                console.log("Fare amount: " + fareAmount);
+                console.log('Fare amount: ' + fareAmount);
         
                 // Proceed only if fareAmount is valid
                 if (!fareAmount || isNaN(fareAmount)) {
@@ -143,8 +143,8 @@ const PurchaseTicket: React.FC = () => {
                     arrivalPointDes,
                     paymentRefNo,
                     amount,
-                    currency: "SGD", // Overriding currency with a default value
-                    phoneNo: "1122334455", // Overriding phone number with a default value
+                    currency: 'SGD', // Overriding currency with a default value
+                    phoneNo: '1122334455', // Overriding phone number with a default value
                     email,
                 };
         

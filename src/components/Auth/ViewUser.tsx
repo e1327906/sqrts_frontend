@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Container, Table, Pagination } from 'react-bootstrap';
 import Layout from '../Layout';
 import { ApiMethod, fetchDataWithoutParam } from '../../services/ApiUtils';
 
 const ViewUser: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [dataList, setDataList] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10); // You can adjust the number of items per page as needed
@@ -17,7 +17,7 @@ const ViewUser: React.FC = () => {
         setDataList(response.data.ResponseData); // Set the entire response data
 
       } catch (error) {
-        console.error("Error fetching User:", error);
+        console.error('Error fetching User:', error);
       }
     };
 

@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "./CheckoutForm";
-import { loadStripe } from "@stripe/stripe-js";
-import axios, { AxiosError } from "axios";
-import { useLocation } from "react-router-dom";
-import CustomNavbar from "../../CustomNavbar";
-import { getSessionUserData } from "../../Utils";
-import Layout from "../../Layout";
-import { ApiMethod, postDataByParams } from "../../../services/ApiUtils";
+import { useEffect, useState } from 'react';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm';
+import { loadStripe } from '@stripe/stripe-js';
+import axios, { AxiosError } from 'axios';
+import { useLocation } from 'react-router-dom';
+import CustomNavbar from '../../CustomNavbar';
+import { getSessionUserData } from '../../Utils';
+import Layout from '../../Layout';
+import { ApiMethod, postDataByParams } from '../../../services/ApiUtils';
 
 const Payment: React.FC = () => {
 
@@ -15,11 +15,11 @@ const Payment: React.FC = () => {
   const purchaseTicketRequest = location.state?.purchaseTicketRequest;
   console.info(purchaseTicketRequest);
 
-  const [clientSecret, setClientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState('');
   const [paymentIntentId, setPaymentIntentId] = useState(null);
   const [hasFetchedPaymentIntent, setHasFetchedPaymentIntent] = useState(false);
 
-  const stripePromise = loadStripe("pk_test_51O42D0Fcp66ilBOoUKBwbM6SsFcD7PxYFa9DS2TC52LEMcQaRftJvT1r5KrqgUMGF3WujJo3bW33EvCpVp2MMdLL00r06Ele0x");
+  const stripePromise = loadStripe('pk_test_51O42D0Fcp66ilBOoUKBwbM6SsFcD7PxYFa9DS2TC52LEMcQaRftJvT1r5KrqgUMGF3WujJo3bW33EvCpVp2MMdLL00r06Ele0x');
 
   //Get session user data
   const sessionUserData = getSessionUserData();
@@ -38,7 +38,7 @@ const Payment: React.FC = () => {
       const response = await postDataByParams(ApiMethod.GETTRAINFARE,
         params,
         {
-          headers: { "Content-Type": "application/json" }
+          headers: { 'Content-Type': 'application/json' }
         }
       );
 
@@ -61,7 +61,7 @@ const Payment: React.FC = () => {
           amount: amount * 100
         },
         {
-          headers: { "Content-Type": "application/json" }
+          headers: { 'Content-Type': 'application/json' }
         }
       );
 
@@ -71,7 +71,7 @@ const Payment: React.FC = () => {
       purchaseTicketRequest.amount = amount;
 
     } catch (error) {
-      console.error("Error fetching payment intent:", error);
+      console.error('Error fetching payment intent:', error);
       // Handle error gracefully, e.g., display an error message to the user
     }
   };

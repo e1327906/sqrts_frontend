@@ -31,7 +31,7 @@ const ViewRefundQRTickets: React.FC = () => {
         setQRDataList(response.data.ResponseData); // Set the entire response data
 
       } catch (error) {
-        console.error("Error fetching QR tickets:", error);
+        console.error('Error fetching QR tickets:', error);
       }
     };
 
@@ -81,7 +81,7 @@ const ViewRefundQRTickets: React.FC = () => {
                   <td>{qrData.departurePointDes}</td>
                   <td>{qrData.arrivalPointDes}</td>
                   <td>
-                    <span className={qrData.status === 1 ? "badge bg-success" : "badge bg-secondary"}>
+                    <span className={qrData.status === 1 ? 'badge bg-success' : 'badge bg-secondary'}>
                       {Utils.getStatusLabel(qrData.status)}
                     </span>
                   </td>

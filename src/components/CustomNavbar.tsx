@@ -1,7 +1,7 @@
 // Navbar.tsx
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   pageTitle: string;

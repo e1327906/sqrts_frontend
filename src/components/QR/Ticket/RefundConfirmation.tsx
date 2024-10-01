@@ -27,12 +27,12 @@ const RefundConfirmation: React.FC<RefundConfirmationProps> = ({
         amount: qrData.amount,
       },
       {
-        headers: { "Content-Type": "application/json" }
+        headers: { 'Content-Type': 'application/json' }
       });
       setLoading(false)
       handleCloseQRPopup(); // Call the handleCloseQRPopup function on successful refund
     } catch (error) {
-      console.error("Error refund:", error);
+      console.error('Error refund:', error);
     }
   };
 

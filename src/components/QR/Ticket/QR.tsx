@@ -40,7 +40,7 @@ const MyComponent = () => {
       <h2>Payment Completion</h2>
       <p>Departure Point: {qrResponse?.departurePoint}</p>
       <p>Arrival Point: {qrResponse?.arrivalPoint}</p>
-      <p>Status: {qrResponse?.status == 1 ? "Valid" : "Invalid"}</p>
+      <p>Status: {qrResponse?.status == 1 ? 'Valid' : 'Invalid'}</p>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { sendFeedback } from "../services/ApiUtils";
-import { FeedbackData } from "../services/types";
+import { sendFeedback } from '../services/ApiUtils';
+import { FeedbackData } from '../services/types';
 
 const FloatingButton = styled.button`
   position: fixed;

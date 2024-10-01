@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { SessionUserData } from '../services/types';
+import { useNavigate } from 'react-router-dom';
 import Utils, { getSessionUserData } from './Utils';
-import { Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import logo from '../assets/SQRT.png';
 
 interface HeaderProps {

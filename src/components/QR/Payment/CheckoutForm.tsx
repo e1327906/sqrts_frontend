@@ -1,18 +1,18 @@
-import { PaymentElement } from "@stripe/react-stripe-js";
-import { useEffect, useState } from "react";
-import { useStripe, useElements } from "@stripe/react-stripe-js";
-import { Button, Col, Form, Row } from "react-bootstrap";
-import Utils from "../../Utils";
-import qs from "qs";
-import { CheckoutProps } from "../../../services/types";
-import { ApiMethod, postDataByParams } from "../../../services/ApiUtils";
+import { PaymentElement } from '@stripe/react-stripe-js';
+import { useEffect, useState } from 'react';
+import { useStripe, useElements } from '@stripe/react-stripe-js';
+import { Button, Col, Form, Row } from 'react-bootstrap';
+import Utils from '../../Utils';
+import qs from 'qs';
+import { CheckoutProps } from '../../../services/types';
+import { ApiMethod, postDataByParams } from '../../../services/ApiUtils';
 
 
 const CheckoutForm: React.FC<CheckoutProps> = ({ purchaseTicketRequest }) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message, setMessage] = useState<string | undefined>("");
+  const [message, setMessage] = useState<string | undefined>('');
   const [isProcessing, setIsProcessing] = useState(false);
   //const [amount, setAmount] = useState<number>(0);
 
@@ -65,10 +65,10 @@ const CheckoutForm: React.FC<CheckoutProps> = ({ purchaseTicketRequest }) => {
       },
     });
 
-    if (error.type === "card_error" || error.type === "validation_error") {
+    if (error.type === 'card_error' || error.type === 'validation_error') {
       setMessage(error.message);
     } else {
-      setMessage("An unexpected error occured.");
+      setMessage('An unexpected error occured.');
     }
 
     setIsProcessing(false);
@@ -95,7 +95,7 @@ const CheckoutForm: React.FC<CheckoutProps> = ({ purchaseTicketRequest }) => {
             <PaymentElement id="payment-element" />
             <Button variant="primary" type="submit" className="w-100 mb-3" disabled={isProcessing || !stripe || !elements} id="submit">
               <span id="button-text">
-                {isProcessing ? "Processing ... " : `Pay now @ $${purchaseTicketRequest.amount}`}
+                {isProcessing ? 'Processing ... ' : `Pay now @ $${purchaseTicketRequest.amount}`}
               </span>
             </Button>
           </Col>

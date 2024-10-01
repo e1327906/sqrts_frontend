@@ -29,6 +29,7 @@
   "scripts": {
     "start": "react-scripts start",
     "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -38,7 +39,13 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "quotes": [
+        "error",
+        "single"
+      ]
+    }
   },
   "browserslist": {
     "production": [

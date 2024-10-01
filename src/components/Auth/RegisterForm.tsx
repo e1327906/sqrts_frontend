@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Container, Form, Button, Modal, ProgressBar } from "react-bootstrap";
-import { registerUser } from "../../services/ApiUtils";
-import OTPForm from "./OTPForm";
-import { SessionUserData, UserProps } from "../../services/types";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Container, Form, Button, Modal, ProgressBar } from 'react-bootstrap';
+import { registerUser } from '../../services/ApiUtils';
+import OTPForm from './OTPForm';
+import { SessionUserData, UserProps } from '../../services/types';
 
 const RegisterForm: React.FC = () => {
-  const [username, setUsername] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [usernameError, setUsernameError] = useState<string>("");
-  const [phoneNumberError, setPhoneNumberError] = useState<string>("");
-  const [emailError, setEmailError] = useState<string>("");
-  const [passwordError, setPasswordError] = useState<string>("");
-  const [registrationFormError, setRegistrationFormError] =useState<string>("");
+  const [username, setUsername] = useState<string>('');
+  const [phoneNumber, setPhoneNumber] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [usernameError, setUsernameError] = useState<string>('');
+  const [phoneNumberError, setPhoneNumberError] = useState<string>('');
+  const [emailError, setEmailError] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
+  const [registrationFormError, setRegistrationFormError] =useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
 
   const [showOTPPopup, setShowOTPPopup] = useState(false);
@@ -50,46 +50,46 @@ const RegisterForm: React.FC = () => {
   const validateFields = () => {
     let isValid = true;
     const errors = {
-      usernameError: "",
-      phoneNumberError: "",
-      emailError: "",
-      passwordError: "",
-      registrationFormError: "",
+      usernameError: '',
+      phoneNumberError: '',
+      emailError: '',
+      passwordError: '',
+      registrationFormError: '',
     };
 
     if (!username) {
-      errors.usernameError = "Username is required.";
+      errors.usernameError = 'Username is required.';
       isValid = false;
     }
 
     if (!phoneNumber) {
-      errors.phoneNumberError = "Phone number is required.";
+      errors.phoneNumberError = 'Phone number is required.';
       isValid = false;
     } else if (!validatePhoneNumber(phoneNumber)) {
       errors.phoneNumberError =
-        "Invalid phone number. Must be 8 digits starting with 8 or 9.";
+        'Invalid phone number. Must be 8 digits starting with 8 or 9.';
       isValid = false;
     }
 
     if (!email) {
-      errors.emailError = "Email is required.";
+      errors.emailError = 'Email is required.';
       isValid = false;
     } else if (!validateEmail(email)) {
-      errors.emailError = "Invalid email format.";
+      errors.emailError = 'Invalid email format.';
       isValid = false;
     }
 
     if (!password) {
-      errors.passwordError = "Password is required.";
+      errors.passwordError = 'Password is required.';
       isValid = false;
     } else if (!checkPasswordStrength(password)) {
       errors.passwordError =
-        "Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.";
+        'Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.';
       isValid = false;
     }
 
     if (!isValid) {
-      errors.registrationFormError = "Please correct the errors above.";
+      errors.registrationFormError = 'Please correct the errors above.';
     }
 
     setUsernameError(errors.usernameError);
@@ -115,18 +115,18 @@ const RegisterForm: React.FC = () => {
       phoneNumber,
       email,
       password,
-      role: "ROLE_USER",
+      role: 'ROLE_USER',
     };
 
     // Initialize sessionUserData as a SessionUserData object
     const sessionUserData: SessionUserData = {
       email: email,
-      userName: "",
-      role: "ROLE_USER",
-      phoneNumber: "",
-      userId: "",
-      accessToken: "",
-      refreshToken: "",
+      userName: '',
+      role: 'ROLE_USER',
+      phoneNumber: '',
+      userId: '',
+      accessToken: '',
+      refreshToken: '',
       isAuthenticated: true,
     };
 
@@ -136,7 +136,7 @@ const RegisterForm: React.FC = () => {
         phoneNumber: phoneNumber,
         email: email,
         password: password,
-        role: "ROLE_USER",
+        role: 'ROLE_USER',
       },
     };
 
@@ -148,27 +148,27 @@ const RegisterForm: React.FC = () => {
       sessionUserData.userName = userName;
       sessionUserData.email = email;
       sessionUserData.role = role;
-      localStorage.setItem("sessionUserData", JSON.stringify(sessionUserData));
+      localStorage.setItem('sessionUserData', JSON.stringify(sessionUserData));
 
       setSuccess(true);
-      setRegistrationFormError("");
+      setRegistrationFormError('');
       showOTPDialogBox(userProps.userPropsData);
     } catch (error) {
       console.error(error);
-      setRegistrationFormError("Registration failed. Please try again."); // TODO: Update error message based on actual API error response
+      setRegistrationFormError('Registration failed. Please try again.'); // TODO: Update error message based on actual API error response
       setSuccess(false);
-      setUsername("");
-      setPhoneNumber("");
-      setEmail("");
-      setPassword("");
+      setUsername('');
+      setPhoneNumber('');
+      setEmail('');
+      setPassword('');
     } finally {
       setLoading(false);
     }
   };
 
   const handleContinueAsGuest = () => {
-    localStorage.setItem("isGuest", "true");
-    navigate("/home", { state: { isAuthenticated: false } });
+    localStorage.setItem('isGuest', 'true');
+    navigate('/home', { state: { isAuthenticated: false } });
   };
 
   const showOTPDialogBox = (userData: any) => {
@@ -185,7 +185,7 @@ const RegisterForm: React.FC = () => {
     <Container className="d-flex align-items-center justify-content-center mt-3">
       <Form
         onSubmit={handleSubmit}
-        style={{ width: "100%", maxWidth: "330px" }}
+        style={{ width: '100%', maxWidth: '330px' }}
       >
         <Form.Group controlId="formUsername" className="mb-3">
           <Form.Label>Name *</Form.Label>
@@ -265,7 +265,7 @@ const RegisterForm: React.FC = () => {
           Already have an account? <a href="/login">Sign in</a>
       </Form.Group> */}
         <Form.Group className="text-muted text-center mt-3">
-          Or continue as a{" "}
+          Or continue as a{' '}
           <a href="/home" onClick={handleContinueAsGuest}>
             Guest
           </a>
@@ -281,7 +281,7 @@ const RegisterForm: React.FC = () => {
             <OTPForm
               userPropsData={userPropsData} // Pass the function as prop
             />
-          )}{" "}
+          )}{' '}
           {/* Pass qrData as prop if available */}
         </Modal.Body>
       </Modal>

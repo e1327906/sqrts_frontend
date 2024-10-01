@@ -1,4 +1,4 @@
-import { SessionUserData } from "../services/types";
+import { SessionUserData } from '../services/types';
 
 class Utils {
 
