@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Form, Button, DropdownDivider } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 import { SessionUserData } from '../../services/types';
 import { loginUser } from '../../services/ApiUtils';
 
@@ -11,7 +11,7 @@ const LoginForm: React.FC = () => {
   const [passwordError, setPasswordError] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
-  
+
   const navigate = useNavigate();
   // Function to validate email format
   const validateEmail = (email: string) => {
@@ -20,7 +20,7 @@ const LoginForm: React.FC = () => {
     // Test the email against the pattern
     return emailRegex.test(email);
   };
-  
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     localStorage.removeItem('sessionUserData');
@@ -34,41 +34,41 @@ const LoginForm: React.FC = () => {
       setError('All fields are required.');
       return;
     }
-    
+
     // Validate email format
     if (!validateEmail(email)) {
       setEmailError('Invalid email format.');
       return;
     }
-    
+
     const userData = {
       email,
       password,
-      "role": "ROLE_USER",
-      isAuthenticated: true
+      role: 'ROLE_USER',
+      isAuthenticated: true,
     };
-    
-    
-   // Initialize sessionUserData as a SessionUserData object
+
+    // Initialize sessionUserData as a SessionUserData object
     const sessionUserData: SessionUserData = {
-      email: email,
+      email,
       role: '',
       userName: '',
       phoneNumber: '',
       userId: '',
       accessToken: '',
       refreshToken: '',
-      isAuthenticated: true
+      isAuthenticated: true,
     };
 
-     loginUser(userData).then(data => {
-
-      const { accessToken, refreshToken, userName, email, role } = data;
-      sessionUserData.accessToken=accessToken;
-      sessionUserData.refreshToken=refreshToken;
-      sessionUserData.userName=userName;
-      sessionUserData.email=email;
-      sessionUserData.role=role;
+    loginUser(userData).then((data) => {
+      const {
+        accessToken, refreshToken, userName, email, role,
+      } = data;
+      sessionUserData.accessToken = accessToken;
+      sessionUserData.refreshToken = refreshToken;
+      sessionUserData.userName = userName;
+      sessionUserData.email = email;
+      sessionUserData.role = role;
       localStorage.setItem('sessionUserData', JSON.stringify(sessionUserData));
 
       setSuccess(true);
@@ -77,7 +77,7 @@ const LoginForm: React.FC = () => {
       setTimeout(() => {
         navigate('/home');
       }, 100);
-    }).catch(error => {
+    }).catch((error) => {
       console.error(error);
       setError('Login failed. Please try again.'); // TODO: Update error message based on actual API error response
       setSuccess(false);
@@ -90,8 +90,8 @@ const LoginForm: React.FC = () => {
 
   return (
     <Container className="d-flex align-items-center justify-content-center mt-3">
-      <Form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '330px' }}>        
-      
+      <Form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '330px' }}>
+
         <Form.Group controlId="formEmail" className="mb-3">
           <Form.Label>Email *</Form.Label>
           <Form.Control
@@ -101,7 +101,7 @@ const LoginForm: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-           {emailError && <div className="text-danger">{emailError}</div>}
+          {emailError && <div className="text-danger">{emailError}</div>}
         </Form.Group>
         <Form.Group controlId="formPassword" className="mb-3">
           <Form.Label>Password *</Form.Label>
@@ -119,11 +119,13 @@ const LoginForm: React.FC = () => {
         </Button>
         {error && <div className="alert alert-danger" role="alert">{error}</div>}
         {success && <div className="alert alert-success" role="alert">Login successful!</div>}
-        {/*<Form.Group className="text-muted text-center">
+        {/* <Form.Group className="text-muted text-center">
           Don't have an account? <a href="/register">Sign Up</a>
-        </Form.Group>*/}
+        </Form.Group> */}
         <Form.Group className="text-muted text-center mt-3">
-        Or continue as a <a href="/home" onClick={handleContinueAsGuest}>Guest</a>
+          Or continue as a
+          {' '}
+          <a href="/home" onClick={handleContinueAsGuest}>Guest</a>
         </Form.Group>
       </Form>
     </Container>

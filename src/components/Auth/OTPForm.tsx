@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
-import { ApiMethod, postDataByParams, registerUser } from '../../services/ApiUtils';
+import { ApiMethod, postDataByParams } from '../../services/ApiUtils';
 import { UserProps } from '../../services/types';
 import { useNavigate } from 'react-router-dom';
 
