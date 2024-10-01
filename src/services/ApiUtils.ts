@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 import { UserLoginData, UserRegistrationData, FeedbackData } from './types';
 
 const apiClient = axios.create({
-  //baseURL: 'http://eb-sqrts-env.eba-bq53g3td.ap-southeast-1.elasticbeanstalk.com/tg_query_api/api/v1/',
+  // baseURL: 'http://eb-sqrts-env.eba-bq53g3td.ap-southeast-1.elasticbeanstalk.com/tg_query_api/api/v1/',
   baseURL: 'http://localhost:8071/qr_gen_api/api/v1/',
   // add more default settings here
 });
@@ -11,7 +11,7 @@ export enum ApiMethod {
   // User endpoints
   GETUSERS = 'users/GetUsers',
   LOGOUT = 'users/Logout',
-  CHANGEPASSWORD = 'users/ChangePassword',  
+  CHANGEPASSWORD = 'users/ChangePassword',
 
   // Ticket Service endpoints
   GETTICKETS = 'tickets/Tickets',
@@ -90,7 +90,7 @@ export const loginUser = async (data: UserLoginData) => {
 export const sendFeedback = async (data: FeedbackData): Promise<Response> => {
   try {
     const axiosResponse = await apiClient.post(ApiMethod.FEEDBACK, data);
-    return new Response(axiosResponse.data, {status: axiosResponse.status});
+    return new Response(axiosResponse.data, { status: axiosResponse.status });
   } catch (error) {
     const axiosError = error as AxiosError;
     if (axiosError.response) {
@@ -100,10 +100,9 @@ export const sendFeedback = async (data: FeedbackData): Promise<Response> => {
     } else {
       console.error('Error message:', axiosError.message);
     }
-    return new Response(null, {status: 500});
+    return new Response(null, { status: 500 });
   }
 };
-
 
 export async function fetchDataWithoutParam(endpoint: string) {
   try {
@@ -117,7 +116,7 @@ export async function fetchDataWithoutParam(endpoint: string) {
 
 export async function fetchDataByParam(endpoint: string, params: any) {
   try {
-    const response = await apiClient.get(endpoint,  params );
+    const response = await apiClient.get(endpoint, params);
     return response;
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -127,10 +126,20 @@ export async function fetchDataByParam(endpoint: string, params: any) {
 
 export async function postDataByParams(endpoint: string, params: any, headers: any) {
   try {
-    const response = await apiClient.post(endpoint, params, headers);
+    const response = await apiClient.post(endpoint, params, { headers });
     return response;
   } catch (error) {
-    console.error('Error posting data:', error);
+    if (axios.isAxiosError(error)) {
+      console.error('Error posting data:', error);
+
+      if (error.response) {
+        // Return the response object if it exists
+        return error.response;
+      }
+    } else {
+      console.error('Unexpected error:', error);
+    }
+
     throw new Error('Failed to post data');
   }
 }
