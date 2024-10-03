@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import Completion from '../components/QR/Payment/Completion';
 import Payment from '../components/QR/Payment/Payment';
@@ -14,6 +14,15 @@ import UserProfile from '../components/Auth/UserProfile';
 import ChangePassword from '../components/Auth/ChangePassword';
 // import NotFoundPage from './pages/NotFoundPage';
 
+interface PrivateRouteProps {
+  isAuthenticated: boolean;
+  children: React.ReactNode;
+}
+
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ isAuthenticated, children }) => {
+  return isAuthenticated ? <>{children}</> : <Navigate to="/" />;
+};
+
 const AppRoutes: React.FC = () => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,12 +31,11 @@ const AppRoutes: React.FC = () => {
     const token = localStorage.getItem('accessToken');
     const isAuthenticated = !!token;
     setIsAuthenticated(isAuthenticated);
-
   }, [navigate]);
 
   return (
     <Routes>
-     <Route path="/" element={<LandingPage/>} />
+      <Route path="/" element={<LandingPage/>} />
       <Route path="/home" element={<HomePage/>} />
       {/*<Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
@@ -40,8 +48,8 @@ const AppRoutes: React.FC = () => {
       <Route path="/payment" element={<Payment />} />
       <Route path="/viewTrainFare" element={<ViewTrainFare />} />
       <Route path="/viewUser" element={<ViewUser />} />
-      <Route path="/profile" element={<UserProfile />} />
-      <Route path="/changePassword" element={<ChangePassword />} />
+      <Route path="/profile" element={<PrivateRoute isAuthenticated={isAuthenticated}><UserProfile /></PrivateRoute>} />
+      <Route path="/changePassword" element={<PrivateRoute isAuthenticated={isAuthenticated}><ChangePassword /></PrivateRoute>} />
     </Routes>
   );
 };

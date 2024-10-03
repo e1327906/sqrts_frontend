@@ -1,10 +1,9 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import backgroundImage from '../assets/background.webp';
-import { Container, Row, Col, Tab, Nav, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Tab, Nav, Button } from 'react-bootstrap';
 import LoginForm from '../components/Auth/LoginForm';
 import RegisterForm from '../components/Auth/RegisterForm';
-import animatedImage from '../assets/home.png';
 
 
 const LandingPage: React.FC = () => {

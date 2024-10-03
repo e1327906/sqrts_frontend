@@ -1,11 +1,10 @@
 import { PaymentElement } from '@stripe/react-stripe-js';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useStripe, useElements } from '@stripe/react-stripe-js';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import Utils from '../../Utils';
 import qs from 'qs';
 import { CheckoutProps } from '../../../services/types';
-import { ApiMethod, postDataByParams } from '../../../services/ApiUtils';
 
 
 const CheckoutForm: React.FC<CheckoutProps> = ({ purchaseTicketRequest }) => {

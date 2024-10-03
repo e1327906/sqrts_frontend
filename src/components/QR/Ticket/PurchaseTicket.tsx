@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Col, Row } from 'react-bootstrap';
-import CustomNavbar from '../../CustomNavbar';
-import axios from 'axios';
 import Layout from '../../Layout';
 import { getSessionUserData } from '../../Utils';
 import { ApiMethod, fetchDataWithoutParam ,postDataByParams} from '../../../services/ApiUtils';
@@ -17,13 +15,13 @@ const PurchaseTicket: React.FC = () => {
 
     const [journeyType, setJourneyType] = useState<number>(0);
     const [groupSize, setGroupSize] = useState<number>(1);
-    const [operatorId, setOperatorId] = useState<number>(0);
+    const [operatorId, ] = useState<number>(0);
     const [startDatetime, setStartDatetime] = useState<number>(0);
     const [endDatetime, setEndDatetime] = useState<number>(0);
-    const [paymentRefNo, setPaymentRefNo] = useState<string>('');
+    const [paymentRefNo, ] = useState<string>('');
     const [amount, setAmount] = useState<number>(0);
-    const [currency, setCurrency] = useState<string>('');
-    const [phoneNo, setPhoneNo] = useState<string>('');
+    // const [currency, setCurrency] = useState<string>('');
+    // const [phoneNo, setPhoneNo] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string>('');
     const [success, setSuccess] = useState<boolean>(false);
@@ -37,7 +35,7 @@ const PurchaseTicket: React.FC = () => {
 
     const [departurePointDes, setDeparturePointDes] = useState<string>('');
     const [arrivalPointDes, setArrivalPointDes] = useState<string>('');
-    const [isProcessing, setIsProcessing] = useState(false);
+    const [, setIsProcessing] = useState(false);
 
     const navigate = useNavigate();
 

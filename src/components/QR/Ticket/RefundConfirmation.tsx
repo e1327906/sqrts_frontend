@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import QRCode from 'qrcode.react';
 import Utils from '../../Utils';
 import { Button, Spinner } from 'react-bootstrap';
 import { QRRefundDataProps } from '../../../services/types';
 import { ApiMethod, postDataByParams } from '../../../services/ApiUtils';
-import { useNavigate } from 'react-router-dom';
 
 interface RefundConfirmationProps extends QRRefundDataProps {
   handleCloseQRPopup: () => void; // Define handleCloseQRPopup as a prop
@@ -15,7 +13,6 @@ const RefundConfirmation: React.FC<RefundConfirmationProps> = ({
   handleCloseQRPopup, // Destructure handleCloseQRPopup from props
 }) => {
   const statusLabel = Utils.getStatusLabel(qrData.status);
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const refundTicket = async () => {   
@@ -29,6 +26,7 @@ const RefundConfirmation: React.FC<RefundConfirmationProps> = ({
       {
         headers: { 'Content-Type': 'application/json' }
       });
+      console.log(response);
       setLoading(false)
       handleCloseQRPopup(); // Call the handleCloseQRPopup function on successful refund
     } catch (error) {
