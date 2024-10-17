@@ -1,4 +1,4 @@
-name: SQRTS Frontend
+name: Deploy React.js to AWS S3
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        
+
       - name: Build app
         run: npm run build
 
