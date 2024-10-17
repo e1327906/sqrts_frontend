@@ -18,12 +18,13 @@ jobs:
         run: echo "CI=false" >> $GITHUB_ENV
 
       - name: Print Environment Variables
-        run: env
+        run: |
+          env
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: '14.x'  #  Adjust to the desired Node.js version
 
       - name: Install dependencies
         run: npm install
@@ -31,19 +32,12 @@ jobs:
       - name: Build app
         run: npm run build
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Upload to S3
+      - name: Upload to  S3
         uses: jakejarvis/s3-sync-action@master
         with:
-          args: --acl public-read
+          args: --acl public-read-write
         env:
           SOURCE_DIR: build/
-          AWS_S3_BUCKET: sqrt-web-app  # updated bucket name
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}  #update the bucket name to sqrt-web-app
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
