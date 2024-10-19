@@ -66,6 +66,7 @@ const ViewRefundQRTickets: React.FC = () => {
             <thead>
               <tr>
                 <th>Serial Number</th>
+                <th>Payment Ref Number</th>
                 <th>Departure Point</th>
                 <th>Arrival Point</th>
                 <th>Status</th>
@@ -78,6 +79,7 @@ const ViewRefundQRTickets: React.FC = () => {
               {currentItems.map((qrData, index) => (
                 <tr key={index}>
                   <td>{qrData.serialNumber}</td>
+                  <td>{qrData.paymentRefNo}</td>
                   <td>{qrData.departurePointDes}</td>
                   <td>{qrData.arrivalPointDes}</td>
                   <td>

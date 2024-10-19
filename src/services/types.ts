@@ -25,7 +25,7 @@ export interface SessionUserData {
 export interface FeedbackData {
     name: string;
     email: string;
-    category: string;
+    category: number;
     message: string;
 }
 

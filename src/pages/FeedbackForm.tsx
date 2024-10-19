@@ -101,7 +101,7 @@ const FeedbackButton = () => {
         const feedbackData: FeedbackData = {
           name: name,
           email: email,
-          category: selectedCategory,
+          category: parseInt(selectedCategory, 10),
           message: message
         };
   
@@ -142,12 +142,12 @@ const FeedbackButton = () => {
 
           <label htmlFor="category">Category:</label>
           <select id="category" required value={selectedCategory} onChange={handleCategoryChange}>
-            <option value="">Select a category</option>
-            <option value="general">General</option>
-            <option value="suggestion">Suggestion</option>
-            <option value="feature">Feature Request</option>
-            <option value="bug">Bug</option>
-            <option value="other">Other</option>
+            <option value="0">Select a category</option>
+            <option value="1">General</option>
+            <option value="2">Bug</option>            
+            <option value="3">Feature Request</option>            
+            <option value="4">Suggestion</option>
+            <option value="5">Other</option>
           </select>
 
           <label htmlFor="message">Message:</label>
