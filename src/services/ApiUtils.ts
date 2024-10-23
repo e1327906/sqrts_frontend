@@ -29,7 +29,7 @@ export enum ApiMethod {
   GETUSERS = 'users/GetUsers',  
   CHANGEPASSWORD = 'users/ChangePassword',  
 
-  FEEDBACK = 'general/Feedback',
+  FEEDBACK = 'feedback/General',
   // Add more endpoints as needed
 }
 
